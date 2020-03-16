@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import RoutineApp from './components/RoutineApp'
+import 'bootstrap/dist/css/bootstrap.css'
+import routes from './routers/AppRouter'
 
-ReactDOM.render(<RoutineApp />, document.getElementById('root'));
+
+ReactDOM.render(routes, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
