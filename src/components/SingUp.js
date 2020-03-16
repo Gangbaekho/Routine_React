@@ -6,7 +6,7 @@ const SignUp = (props) => {
     // create state for username and password by useState
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [enabled, setEnabled] = useState(1)
+    const [enabled, setEnabled] = useState(true)
 
     const onSubmit = (e) => {
         e.preventDefault()
