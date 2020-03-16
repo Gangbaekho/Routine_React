@@ -14,11 +14,13 @@ const SignUp = (props) => {
     }
 
     return (
-        <div>
+        <div className="container">
             <form onSubmit={onSubmit}>
-                <input type="text" placeholder="ID"
-                    name="username" className="form-control"
-                    onChange={(e) => setUsername(e.target.value)} />
+                <div className="col-xs-3">
+                    <input type="text" placeholder="ID"
+                        name="username" className="form-control"
+                        onChange={(e) => setUsername(e.target.value)} />
+                </div>
                 <input type="password" placeholder="PASSWORD"
                     name="password" className="form-control"
                     onChange={(e) => setPassword(e.target.value)} />
