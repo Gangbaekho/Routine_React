@@ -25,8 +25,9 @@ const SignIn = (props) => {
         AuthenticationService.
             executeJwtAuthenticationService(username, password)
             .then((response) => {
-                AuthenticationService.registerSuccessfulLoginForJwt(username, response.data.jwt)
-                history.push(`/welcome/${username}`)
+                AuthenticationService.registerSuccessfulLoginForJwt(username, response.data.token)
+                // history.push(`/welcome/${username}`)
+                console.log(response.data.token)
 
             }).catch(() => {
                 setHasLoginFailed(true)
