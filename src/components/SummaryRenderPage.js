@@ -6,17 +6,25 @@ const SummaryRenderPage = (props) => {
 
     const [summaries, setSummaries] = useState([])
 
-    // make handleGetSummaries event handler for getting summaries from server
-    const handleGetSummaries = () => {
+    useEffect(() => {
 
-        axios.get('http://localhost:8080/summary/kimjinhyun/1', {
+        axios.get(`http://localhost:8080/summary/${sessionStorage.getItem('authenticatedUser')}`, {
             headers: {
                 authorization: 'Bearer ' + sessionStorage.getItem('token')
             }
-        }).then((data) => console.log(data.data))
+        }).then((data) => setSummaries(data.data))
             .catch((error) => console.log(error))
+    })
 
+    // make handleGetSummaries event handler for getting summaries from server
+    const handleGetSummaries = () => {
 
+        axios.get(`http://localhost:8080/summary/${sessionStorage.getItem('authenticatedUser')}`, {
+            headers: {
+                authorization: 'Bearer ' + sessionStorage.getItem('token')
+            }
+        }).then((data) => setSummaries(data.data))
+            .catch((error) => console.log(error))
 
     }
 
@@ -30,6 +38,13 @@ const SummaryRenderPage = (props) => {
 
             <button className="btn btn-info"
                 onClick={handleGetSummaries}>get summary</button>
+
+            {summaries.map((item) => (
+                <div key={item.id}>
+                    <h1>{item.title}</h1>
+                    <h2>{item.content}</h2>
+                </div>
+            ))}
         </div>
     )
 }

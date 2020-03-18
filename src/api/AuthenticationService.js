@@ -54,14 +54,27 @@ class AuthenticationService {
     // set axios interceptor for not sending header authorization every request
     setupAxiosInterceptors(token) {
 
-        axios.interceptors.request.use(
-            (config) => {
+        let axiosInstance = axios.create({
+            baseURL: "http://localhost:9000",
+            timeout: 10000,
+        })
 
+        axiosInstance.interceptors.request.use(
+            config => {
                 config.headers.authorization = token
+                return config;
+            },
+            error => Promise.reject(error)
+        );
 
-                return config
-            }
-        )
+        // axios.interceptors.request.use(
+        //     (config) => {
+
+        //         config.headers.authorization = token
+
+        //         return config
+        //     }
+        // )
     }
 
 
