@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom";
 import AuthenticationService from '../api/AuthenticationService'
+import { withRouter } from 'react-router-dom'
+
 
 const SignIn = (props) => {
+
+    // make history to redirect somewhere
+    let history = useHistory();
 
     // create state for username and password by useState
     const [username, setUsername] = useState('')
@@ -15,16 +21,16 @@ const SignIn = (props) => {
 
         e.preventDefault();
 
+
         AuthenticationService.
             executeJwtAuthenticationService(username, password)
             .then((response) => {
                 AuthenticationService.registerSuccessfulLoginForJwt(username, response.data.jwt)
-                // this.props.history.push(`/welcome/${this.state.username}`)
-                console.log(response.data.jwt)
+                history.push(`/welcome/${username}`)
+
             }).catch(() => {
                 setHasLoginFailed(true)
                 setShowSuccessMessage(false)
-                console.log('failed')
             })
     }
 
@@ -45,4 +51,4 @@ const SignIn = (props) => {
     )
 }
 
-export default SignIn
+export default withRouter(SignIn)
