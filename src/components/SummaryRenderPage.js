@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import AuthenticationService from '../api/AuthenticationService'
+import { useHistory, withRouter } from 'react-router-dom'
 
 const SummaryRenderPage = (props) => {
+
+    // to use history.push(somewhere)
+    const history = useHistory()
 
     const [summaries, setSummaries] = useState([])
 
@@ -38,6 +42,9 @@ const SummaryRenderPage = (props) => {
 
             <button className="btn btn-info"
                 onClick={handleGetSummaries}>get summary</button>
+            <button className="btn btn-success"
+                onClick={() => history.push(`/summary/${sessionStorage.getItem('authenticatedUser')}/create-summary`)}
+            >Create Summary</button>
 
             {summaries.map((item) => (
                 <div key={item.id}>
@@ -45,8 +52,9 @@ const SummaryRenderPage = (props) => {
                     <h2>{item.content}</h2>
                 </div>
             ))}
+
         </div>
     )
 }
 
-export default SummaryRenderPage
+export default withRouter(SummaryRenderPage)
