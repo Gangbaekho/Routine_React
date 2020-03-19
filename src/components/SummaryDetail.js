@@ -20,7 +20,7 @@ const SummaryDetail = (props) => {
             }).then((data) => setSummary(data.data))
             .catch((error) => console.log('can not fetch the summary'))
 
-        axios.get(`http://localhost:8080/question/${props.match.params.username}/${props.match.params.id}`,
+        axios.get(`http://localhost:8080/questions/${props.match.params.username}/${props.match.params.id}`,
             {
                 headers: {
                     'Authorization': 'Bearer ' + sessionStorage.getItem('token')
@@ -50,4 +50,4 @@ const SummaryDetail = (props) => {
     )
 }
 
-export default SummaryDetail
+export default withRouter(SummaryDetail)
