@@ -7,6 +7,8 @@ import SummaryRenderPage from '../components/SummaryRenderPage'
 import WelcomePage from '../components/WelcomePage'
 import SummaryForm from '../components/SummaryForm'
 import SummaryDetail from '../components/SummaryDetail'
+import QuestionForm from '../components/QuestionForm'
+
 const routes = (
     <BrowserRouter>
         <Route path="/" component={RoutineApp} exact={true} />
@@ -16,6 +18,7 @@ const routes = (
         <Route path="/summary/:username/:id" component={SummaryDetail} />
         <Route path="/welcome/:username" component={WelcomePage} />
         <Route path="/summary/:username/create-summary" component={SummaryForm} />
+        <Route path="/question/:username/:summaryId" component={QuestionForm} />
     </BrowserRouter>
 );
 

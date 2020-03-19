@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import AuthenticationService from '../api/AuthenticationService'
+import { useHistory, withRouter } from 'react-router-dom'
 
 const SignUp = (props) => {
+
+    const history = useHistory()
 
     // create state for username and password by useState
     const [username, setUsername] = useState('')
@@ -11,6 +14,7 @@ const SignUp = (props) => {
     const onSubmit = (e) => {
         e.preventDefault()
         AuthenticationService.createUser(username, password, enabled)
+        history.push('/signin')
     }
 
     return (
@@ -30,4 +34,4 @@ const SignUp = (props) => {
     )
 }
 
-export default SignUp
+export default withRouter(SignUp)
