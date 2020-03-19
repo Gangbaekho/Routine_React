@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 const SummaryForm = (props) => {
+
+    const history = useHistory()
 
     // create state for register summary
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [understanding, setUnderstanding] = useState('')
     const [folder, setFolder] = useState('')
+
 
     const onSubmit = (e) => {
 
@@ -26,7 +29,7 @@ const SummaryForm = (props) => {
                     authorization: 'Bearer ' + sessionStorage.getItem('token')
 
                 }
-            }).then(() => console.log('send success'))
+            }).then(() => history.push(`/summary/${sessionStorage.getItem('authenticatedUser')}`))
             .catch((error) => console.log('can not send data to server'))
 
 
