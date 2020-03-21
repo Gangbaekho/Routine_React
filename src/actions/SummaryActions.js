@@ -41,29 +41,32 @@ const removeSummary = (id) => ({
     id
 })
 
-const addQuestion = ({
+const addQuestion = (summaryId, {
     title = '',
     content = ''
 } = {}
 ) => ({
     type: 'ADD_QUESTION',
+    summaryId,
     question: {
         title,
         content
     }
 })
 
-const removeQuestion = (id) => ({
+const removeQuestion = (summaryId, id) => ({
     type: 'REMOVE_QUESTION',
+    summaryId,
     id
 })
 
-const updateQuestion = ({
+const updateQuestion = (summaryId, {
     id,
     title,
     content
 }) => ({
     type: 'UPDATE_QUESTION',
+    summaryId,
     question: {
         id,
         title,
