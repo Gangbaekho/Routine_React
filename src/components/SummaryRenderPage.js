@@ -6,6 +6,7 @@ import Summary from '../components/Summary'
 import summaryReducer from '../reducers/SummaryReducer'
 import SummaryContext from '../context/summaryContext'
 import SummaryService from '../api/SummaryService'
+import Summary1 from '../components/Summary1'
 import { getSummaries } from '../actions/SummaryActions'
 
 const SummaryRenderPage = (props) => {
@@ -29,7 +30,9 @@ const SummaryRenderPage = (props) => {
 
     return (
         <SummaryContext.Provider value={{ summaries, dispatch }}>
-            <button onClick={() => console.log(summaries)}>get summaries</button>
+            {summaries.map((summary) => (
+                <Summary1 key={summary.id} {...summary} />
+            ))}
         </SummaryContext.Provider>
     )
 }
