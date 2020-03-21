@@ -1,3 +1,10 @@
+import axios from 'axios'
+
+
+const getSummaries = (summaries) => ({
+    type: 'GET_SUMMARIES',
+    summaries
+})
 
 const addSummary = ({
     title = '',
@@ -103,7 +110,7 @@ const removeRelatedSummary = (summaryId, removedSummaryId) => ({
 })
 
 export {
-    addSummary, updateSummary, removeSummary,
+    getSummaries, addSummary, updateSummary, removeSummary,
     addQuestion, updateQuestion, removeQuestion,
     addRelatedSummary, removeRelatedSummary
 }
