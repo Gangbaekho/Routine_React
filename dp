@@ -1,0 +1,77 @@
+[33mcommit 90cd72277841679800ef0645759859ef54a15107[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Thu Mar 19 23:12:45 2020 +0900
+
+    Question update and delete function completed (test version)
+
+[33mcommit 5c2d1442b73719297a635f159491b7ab558b2c76[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Thu Mar 19 19:56:35 2020 +0900
+
+    add relatedQuestions on SummaryDetail
+
+[33mcommit 0d4cb71bf5f70d93febcf28ee8f640cad231db58[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Thu Mar 19 16:22:55 2020 +0900
+
+    create SummaryDetail for getting each summary
+
+[33mcommit 134d68c0c22c9f426b9a6e60cccc835119754429[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Thu Mar 19 13:08:40 2020 +0900
+
+    create SumaryForm and test register summary from authenticated user
+
+[33mcommit f2e5ac43811bcd487732fe5f2b0e032c22077526[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Wed Mar 18 23:32:02 2020 +0900
+
+    test getting summary from authenticated user and display it at SummaryRenderPage
+
+[33mcommit 9ed982b34603f0cde1f32dbc184d0a75d0656a90[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Wed Mar 18 19:48:31 2020 +0900
+
+    test getting summary from authenticated user
+
+[33mcommit c0155012874019b2c0e579c2752572d3c0b8042d[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Wed Mar 18 16:33:53 2020 +0900
+
+    create SummaryRenderPage.js , Summary.js, WelcomePage.js and update AppRouter for them
+
+[33mcommit 20706804e3bed43e1f51ac1f899b3f4bef7cd80a[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Tue Mar 17 01:42:38 2020 +0900
+
+    update AuthenticationService for jwt login and create singin page
+
+[33mcommit ec7ecc30910ab5215a0a820a90bfd360d6423c23[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Mon Mar 16 22:57:51 2020 +0900
+
+    signup update for authentication
+
+[33mcommit 139dbcd2ad85b43cd50c1a1da30268b88b36b445[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Mon Mar 16 19:43:20 2020 +0900
+
+    make header and navigation bar
+
+[33mcommit 61ddae2ab2624ef375e28c97bbbf2bd913928c7b[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Mon Mar 16 16:03:09 2020 +0900
+
+    create signup component
+
+[33mcommit 8e189f1c3746ac2429931cb9efefaa4654db745c[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Mon Mar 16 14:56:02 2020 +0900
+
+    init react
+
+[33mcommit d4e51001ddcaa558614f5a60e2a2ff437c097e1f[m
+Author: roorooro1 <roorooro9933@gmail.com>
+Date:   Mon Mar 16 14:41:44 2020 +0900
+
+    Initialize project using Create React App
