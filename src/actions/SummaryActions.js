@@ -1,4 +1,5 @@
 import axios from 'axios'
+import uuid from 'uuid'
 
 
 const getSummaries = (summaries) => ({
@@ -7,6 +8,7 @@ const getSummaries = (summaries) => ({
 })
 
 const addSummary = ({
+    id = uuid(),
     title = '',
     content = '',
     understanding = 1,
@@ -17,6 +19,7 @@ const addSummary = ({
 ) => ({
     type: 'ADD_SUMMARY',
     summary: {
+        id,
         title,
         content,
         understanding,

@@ -7,13 +7,15 @@ import summaryReducer from '../reducers/SummaryReducer'
 import SummaryContext from '../context/summaryContext'
 import SummaryService from '../api/SummaryService'
 import Summary1 from '../components/Summary1'
+import SummaryForm from '../components/SummaryForm'
+import QuestionList from '../components/QuestionList'
 import { getSummaries } from '../actions/SummaryActions'
+import uuid from 'uuid'
 
 const SummaryRenderPage = (props) => {
 
     const [summaries, dispatch] = useReducer(summaryReducer, [])
-
-    const history = useHistory()
+    const [toggleShowSummaryForm, setToggleShowSummaryForm] = useState(false)
 
     useEffect(() => {
         axios.get(`http://localhost:8080/summary/${sessionStorage.getItem('authenticatedUser')}`, {
@@ -24,14 +26,16 @@ const SummaryRenderPage = (props) => {
             .catch((error) => console.log(error))
     }, [])
 
-
-
-
-
     return (
         <SummaryContext.Provider value={{ summaries, dispatch }}>
+            <button className="btn btn-success"
+                onClick={() => setToggleShowSummaryForm(!toggleShowSummaryForm)}>Create Summary</button>
+            {toggleShowSummaryForm && <SummaryForm />}
             {summaries.map((summary) => (
-                <Summary1 key={summary.id} {...summary} />
+                <div key={uuid()}>
+                    <Summary1 {...summary} />
+                    <QuestionList questions={summary.questions} summaryId={summary.id} />
+                </div>
             ))}
         </SummaryContext.Provider>
     )

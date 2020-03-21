@@ -4,13 +4,16 @@ import Question from '../components/Question'
 
 const Summary1 = ({ id, title, content, understanding, folder, questions, related }) => {
 
-    const { summaries, dispatch } = useContext(SummaryContext)
+    const { summaries } = useContext(SummaryContext)
 
     const [toggleShowSummaryDetail, setToggleShowSummaryDetail] = useState(false)
     const [toggleShowQuestions, setToggleShowQuestions] = useState(true)
 
-    const myQuestions = summaries.find((summary) => summary.id === id).questions
+    let myQuestions = summaries.find((summary) => summary.id === id).questions
 
+    if (myQuestions === undefined) {
+        myQuestions = []
+    }
     return (
         <div>
             <h1 onClick={() => {
@@ -18,19 +21,25 @@ const Summary1 = ({ id, title, content, understanding, folder, questions, relate
             }}>{title}</h1>
             {toggleShowSummaryDetail &&
                 (<div>
-                    <h2>{content}</h2>
-                    <p>{understanding}</p>
-                    <p>{folder}</p>
-                    {toggleShowQuestions && myQuestions.map((question) => (
-                        // <div key={question.id}>
-                        //     <h1>Question Title : {question.title}</h1>
-                        //     <h2>Question Content : {question.content}</h2>
-                        // </div>
-                        <Question key={question.id} {...question} />
-                    ))}
-                    <button className="btn btn-success"
-                        onClick={() => setToggleShowQuestions(!toggleShowQuestions)}
-                    >Questions</button>
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>UnderStanding</th>
+                                <th>Folder</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{title}</td>
+                                <td>{content}</td>
+                                <td>{understanding}</td>
+                                <td>{folder}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>)
             }
 

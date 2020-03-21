@@ -32,12 +32,23 @@ const summaryReducer = (state = [], action) => {
 
         case 'REMOVE_QUESTION': {
 
-            const summaryIndexForRemoveQuestion = state.findIndex((item) => item.id === action.summaryId)
-            const QuestionIndexForRemove = state[summaryIndexForRemoveQuestion].questions.findIdex((item) => item.id === action.id)
+            const indexSummaryForRemoveQuestion = state.findIndex((summary) => summary.id === action.summaryId)
 
-            state[summaryIndexForRemoveQuestion].questions.splice(QuestionIndexForRemove, 1)
+            const targetSummary = state.find((summary) => summary.id === action.summaryId)
 
-            return state
+            const filteredQuestions = targetSummary.questions.filter((question) => question.id !== action.id)
+
+            const newSummary = {
+                ...targetSummary,
+                questions: filteredQuestions
+            }
+
+            const filteredState = state.filter((summary) => summary.id !== action.summary)
+            filteredState.splice(indexSummaryForRemoveQuestion, 1, newSummary)
+
+            return filteredState
+
+
 
         }
 
