@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
 import SummaryContext from '../context/summaryContext'
 import SummaryUpdateForm from './SummaryUpdateForm'
+import axios from 'axios'
+import { removeSummary } from '../actions/SummaryActions'
 
 
 const Summary1 = ({ id, title, content, understanding, folder, questions, related }) => {
@@ -13,6 +15,21 @@ const Summary1 = ({ id, title, content, understanding, folder, questions, relate
     const handleBack = () => {
         setToggleShowUpdateForm(!toggleShowSummaryUpdateForm)
         setToggleShowSummaryDetail(!toggleShowSummaryDetail)
+    }
+
+    const handleRemoveSummary = () => {
+        axios.delete(
+            `http://localhost:8080/summary/${sessionStorage.getItem('authenticatedUser')}/${id}`,
+            {
+                headers: {
+                    authorization: 'Bearer ' + sessionStorage.getItem('token')
+
+                }
+            }).then(() => {
+                console.log('summary remove  success')
+                dispatch(removeSummary(id))
+            })
+            .catch('summary form send failed')
     }
 
     let myQuestions = summaries.find((summary) => summary.id === id).questions
@@ -52,7 +69,8 @@ const Summary1 = ({ id, title, content, understanding, folder, questions, relate
                                         }}>Update</button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-danger btn-sm">Remove</button>
+                                    <button className="btn btn-danger btn-sm"
+                                        onClick={handleRemoveSummary}>Remove</button>
                                 </td>
                             </tr>
                         </tbody>

@@ -22,20 +22,6 @@ const QuestionUpdateForm = (props) => {
             .catch((error) => console.log('failed'))
     }
 
-    useEffect(() => {
-
-        axios.get(`http://localhost:8080/question/${props.match.params.username}/${props.match.params.questionId}`,
-            {
-                headers: {
-                    authorization: 'Bearer ' + sessionStorage.getItem('token')
-
-                }
-            }).then((data) => {
-                setTitle(data.data.title)
-                setContent(data.data.content)
-                console.log('success')
-            }).catch((error) => console.log('failed get question'))
-    }, [])
 
     return (
         <div>
