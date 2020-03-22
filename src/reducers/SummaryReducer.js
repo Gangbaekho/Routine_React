@@ -12,10 +12,14 @@ const summaryReducer = (state = [], action) => {
             ]
         case 'UPDATE_SUMMARY': {
 
-            const indexForUpdate = state.findIndex((item) => item.id === action.summary.id)
-            state[indexForUpdate] = action.summary
+            const indexSummaryForUpdate = state.findIndex((summary) => summary.id === action.summary.id)
 
-            return state
+            const filteredState = state.filter((summary) => summary.id !== action.summary.id)
+
+            filteredState.splice(indexSummaryForUpdate, 1, action.summary)
+
+            return filteredState
+
 
         }
 

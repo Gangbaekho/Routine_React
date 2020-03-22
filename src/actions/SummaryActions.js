@@ -34,7 +34,9 @@ const updateSummary = ({
     title,
     content,
     understanding,
-    folder
+    folder,
+    related,
+    questions
 }) => ({
     type: 'UPDATE_SUMMARY',
     summary: {
@@ -42,7 +44,9 @@ const updateSummary = ({
         title,
         content,
         understanding,
-        folder
+        folder,
+        related,
+        questions
     }
 })
 
