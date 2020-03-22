@@ -22,7 +22,7 @@ const SummaryRenderPage = (props) => {
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token')
             }
-        }).then((data) => dispatch(getSummaries(data.data)))
+        }).then((data) => dispatch(getSummaries(data.data.reverse())))
             .catch((error) => console.log(error))
     }, [])
 

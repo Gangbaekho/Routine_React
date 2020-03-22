@@ -52,6 +52,7 @@ const removeSummary = (id) => ({
 })
 
 const addQuestion = (summaryId, {
+    id = uuid(),
     title = '',
     content = ''
 } = {}
@@ -59,6 +60,7 @@ const addQuestion = (summaryId, {
     type: 'ADD_QUESTION',
     summaryId,
     question: {
+        id,
         title,
         content
     }

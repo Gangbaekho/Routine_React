@@ -7,8 +7,8 @@ const summaryReducer = (state = [], action) => {
             return action.summaries
         case 'ADD_SUMMARY':
             return [
-                ...state,
-                action.summary
+                action.summary,
+                ...state
             ]
         case 'UPDATE_SUMMARY': {
 
@@ -24,10 +24,24 @@ const summaryReducer = (state = [], action) => {
 
         case 'ADD_QUESTION': {
 
-            const indexForUpdate = state.findIndex((item) => item.id === action.summaryId)
-            state[indexForUpdate].questions.push(action.question)
+            const indexSummaryForAddQuestion = state.findIndex((summary) => summary.id === action.summaryId)
 
-            return state
+            const targetSummary = state.find((summary) => summary.id === action.summaryId)
+
+            const newSummary = {
+                ...targetSummary,
+                questions: [
+                    action.question
+                    , ...targetSummary.questions
+                ]
+            }
+
+            const filteredState = state.filter((summary) => summary.id !== action.summary)
+            filteredState.splice(indexSummaryForAddQuestion, 1, newSummary)
+
+            return filteredState
+
+
         }
 
         case 'REMOVE_QUESTION': {

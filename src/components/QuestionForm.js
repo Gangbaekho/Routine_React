@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory, withRouter } from 'react-router-dom'
+import SummaryContext from '../context/summaryContext'
+import { addQuestion } from '../actions/SummaryActions'
 import axios from 'axios'
 
 const QuestionForm = (props) => {
 
-    const history = useHistory()
-
+    const { dispatch } = useContext(SummaryContext)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
 
@@ -13,13 +14,13 @@ const QuestionForm = (props) => {
 
         e.preventDefault()
 
-        axios.post(`http://localhost:8080/question/${props.match.params.username}/${props.match.params.summaryId}`,
+        axios.post(`http://localhost:8080/question/${props.match.params.username}/${props.summaryId}`,
             { title, content }, {
             headers: {
                 authorization: 'Bearer ' + sessionStorage.getItem('token')
 
             }
-        }).then(() => history.push(`/summary/${props.match.params.username}/${props.match.params.summaryId}`))
+        }).then(() => dispatch(addQuestion(props.summaryId, { title, content })))
             .catch((error) => console.log('send data failed'))
     }
 
